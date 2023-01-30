@@ -1,0 +1,66 @@
+#include<iostream>
+
+using namespace std;
+
+class Neurona{
+private:
+    int id;
+    float voltaje;
+    int posicion_x;
+    int posicion_y;
+    int red;
+    int green;
+    int blue;
+public:
+    int Pb_id;
+    float Pb_vol;
+    int Pb_X, Pb_Y, Pb_red, Pb_green, Pb_blue;
+   void Mostrar_Neu();
+   void Atributos_public(){
+     Pb_id = id;
+   }
+};
+
+class Admin_Neurona{
+    private:
+        Neurona *siguiente;
+    public:
+        void Agregar_inicio(Neurona *&lista,int Ag_id, float Ag_vol, int Ag_X, int Ag_Y, int Ag_red, int Ag_green, int Ag_blue){
+            Neurona *new_neurona = new Neurona();// creamos un nuevo nodo y asignamos memoria a la lista
+             new_neurona->Pb_id = Ag_id;               //asignamos los datos que nos manda el usuario al los campos de nuestro nodo
+             new_neurona->Pb_vol = Ag_vol;
+             new_neurona->Pb_X = Ag_X;
+             new_neurona->Pb_Y = Ag_Y;
+             new_neurona->Pb_red = Ag_red;
+             new_neurona->Pb_green = Ag_green;
+             new_neurona->Pb_blue = Ag_blue;
+         
+             Neurona *aux1 = lista; // crear nodos auxiliares
+             Neurona *aux2; // crear nodos auxiliares
+         
+             while((aux1 != NULL) && (aux1->id < idx)){
+                 aux2 = aux1;
+                 aux1 = aux1->siguiente;
+             }
+         
+             if(lista == aux1){
+                 lista = new_neurona;
+             }else{
+                 aux2->siguiente = new_neurona;
+             }
+         
+             new_neurona->siguiente = aux1;
+             system("cls");
+             printf("\n--Paquete Agregado Correctamente--\n");
+             system("pause");
+        }
+        void Agregar_final();
+        void Mostrar_lista();
+};
+
+
+int main(){
+    Neurona *lista = NULL;
+    
+    return 0;
+}
