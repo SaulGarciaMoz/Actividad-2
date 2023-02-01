@@ -11,19 +11,34 @@ private:
     int red;
     int green;
     int blue;
+    
 public:
-    int Pb_id;
+    Neurona *siguiente;
+    int Pb_id, Pb_X, Pb_Y, Pb_red, Pb_green, Pb_blue;
     float Pb_vol;
-    int Pb_X, Pb_Y, Pb_red, Pb_green, Pb_blue;
-   void Mostrar_Neu();
-   void Atributos_public(){
-     Pb_id = id;
+    void Mostrar_Neu(){
+        cout<<"ID: "<<id;
+        cout<<"Voltaje: "<<voltaje;
+        cout<<"Posicion X: "<<posicion_x;
+        cout<<"posicion Y: "<<posicion_y;
+        cout<<"Rojo: "<<red;
+        cout<<"verde: "<<green;
+        cout<<"azul: "<<blue;
+    };
+    void Atributos_public(){
+    id = Pb_id;
+    voltaje = Pb_vol;
+    posicion_x = Pb_X;
+    posicion_y = Pb_Y;
+    red = Pb_red;
+    green = Pb_green;
+    blue = Pb_blue;        
    }
 };
 
 class Admin_Neurona{
     private:
-        Neurona *siguiente;
+        //Neurona *siguiente;
     public:
         void Agregar_inicio(Neurona *&lista,int Ag_id, float Ag_vol, int Ag_X, int Ag_Y, int Ag_red, int Ag_green, int Ag_blue){
             Neurona *new_neurona = new Neurona();// creamos un nuevo nodo y asignamos memoria a la lista
@@ -34,24 +49,24 @@ class Admin_Neurona{
              new_neurona->Pb_red = Ag_red;
              new_neurona->Pb_green = Ag_green;
              new_neurona->Pb_blue = Ag_blue;
-         
+
              Neurona *aux1 = lista; // crear nodos auxiliares
              Neurona *aux2; // crear nodos auxiliares
-         
-             while((aux1 != NULL) && (aux1->id < idx)){
+
+             while((aux1 != NULL) && (aux1->Pb_id < Ag_id)){
                  aux2 = aux1;
                  aux1 = aux1->siguiente;
              }
-         
+
              if(lista == aux1){
                  lista = new_neurona;
              }else{
                  aux2->siguiente = new_neurona;
              }
-         
+
              new_neurona->siguiente = aux1;
              system("cls");
-             printf("\n--Paquete Agregado Correctamente--\n");
+             printf("\n--Neurona Agregado Correctamente--\n");
              system("pause");
         }
         void Agregar_final();
@@ -61,6 +76,7 @@ class Admin_Neurona{
 
 int main(){
     Neurona *lista = NULL;
-    
+
     return 0;
 }
+
